@@ -22,7 +22,7 @@ public class Response {
     private UserDto user;
     private DeskDto desk;
     private BookingDto booking;
-    private List<User> userDtoList;
+    private List<UserDto> userList;
     private List<Booking> bookingList;
 
 }
