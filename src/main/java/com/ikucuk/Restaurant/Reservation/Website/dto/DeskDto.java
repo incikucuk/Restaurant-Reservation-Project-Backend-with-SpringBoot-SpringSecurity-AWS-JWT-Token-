@@ -15,4 +15,5 @@ public class DeskDto {
     private String deskPhotoUrl;
     private String description;
     private List<BookingDto> bookingList = new ArrayList<>();
+
 }

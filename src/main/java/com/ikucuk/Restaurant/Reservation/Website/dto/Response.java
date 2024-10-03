@@ -5,6 +5,7 @@ import com.ikucuk.Restaurant.Reservation.Website.entity.Booking;
 import com.ikucuk.Restaurant.Reservation.Website.entity.User;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -23,6 +24,7 @@ public class Response {
     private DeskDto desk;
     private BookingDto booking;
     private List<UserDto> userList;
-    private List<Booking> bookingList;
+    private List<BookingDto> bookingList;
+    private List<DeskDto> deskList;
 
 }
