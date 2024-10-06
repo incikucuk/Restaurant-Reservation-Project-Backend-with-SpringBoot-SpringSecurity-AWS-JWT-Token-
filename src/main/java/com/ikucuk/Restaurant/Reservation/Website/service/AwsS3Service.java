@@ -29,10 +29,12 @@ public class AwsS3Service {
 
         try {
             String s2FileName = photo.getOriginalFilename();
-            BasicAWSCredentials awsCredentials = new BasicAWSCredentials(awsS3AccessKey, awsS3SecretKey);
+            BasicAWSCredentials awsCredentials = new BasicAWSCredentials(
+                    "AKIAS66UCXQD6TKEBHX7",
+                    "vLivAlxSq+i1cA7creJNoe8RqcWWJq3oXeW67h9L");
             AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard()
                     .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-                    .withRegion(Regions.US_EAST_2)
+                    .withRegion(Regions.EU_NORTH_1)
                     .build();
             InputStream inputStream = photo.getInputStream();
 

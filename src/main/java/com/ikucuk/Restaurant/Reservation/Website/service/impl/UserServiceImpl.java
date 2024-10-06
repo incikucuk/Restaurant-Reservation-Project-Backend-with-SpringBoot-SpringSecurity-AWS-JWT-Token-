@@ -36,7 +36,7 @@ public class UserServiceImpl implements IUserService {
     public Response register(User user) {
         Response response = new Response();
         try{
-            if(user.getRole() == null || user.getRole().isBlank()){
+            if(user.getRole() == null || user.getRole().isBlank()){  //postmanda userRole alanı girilmeze USER olarak atanir
                 user.setRole("USER");
             }
             if(userRepository.existsByEmail(user.getEmail())){
@@ -68,10 +68,10 @@ public class UserServiceImpl implements IUserService {
             var user = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow(() -> new OurException("User cannot found"));
             var token = jwtUtils.generateToken(user);
 
-            response.setToken(token);
-            response.setExpirationTime("7 days");
-            response.setRole(user.getRole());
             response.setMessage("Sucessfully!");
+            response.setToken(token);
+            response.setRole(user.getRole());
+            response.setExpirationTime("7 days");
             response.setStatusCode(200);
 
         }catch(OurException e){
@@ -124,7 +124,7 @@ public class UserServiceImpl implements IUserService {
     public Response deleteUser(String userId) {
         Response response = new Response();
         try{
-            User user = userRepository.findById(Long.valueOf(userId)).orElseThrow(() -> new OurException("User not found"));
+            userRepository.findById(Long.valueOf(userId)).orElseThrow(() -> new OurException("User not found"));
             userRepository.deleteById(Long.valueOf(userId));
 
             response.setStatusCode(200);

@@ -45,10 +45,10 @@ public class Utils {
         deskDto.setDeskPhotoUrl(desk.getDeskPhotoUrl());
         deskDto.setDescription(desk.getDescription());
 
-        if(desk.getBookingList() != null){
-            deskDto.setBookingList(desk.getBookingList().stream().map(Utils::mapBookingEntityToBookingDto).
-                    collect(Collectors.toList()));
-        }
+//        if(desk.getBookingList() != null){
+//            deskDto.setBookingList(desk.getBookingList().stream().map(Utils::mapBookingEntityToBookingDto).
+//                    collect(Collectors.toList()));
+//        }
 
         return deskDto;
     }
@@ -65,7 +65,7 @@ public class Utils {
 
         return bookingDto;
     }
-
+    
     public static BookingDto mapBookingEntityToBookingDtoPlusBookedRooms(Booking booking, boolean mapUser){
         BookingDto bookingDto = new BookingDto();
         bookingDto.setId(booking.getId());

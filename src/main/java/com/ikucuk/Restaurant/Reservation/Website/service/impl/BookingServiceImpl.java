@@ -58,6 +58,7 @@ public class BookingServiceImpl implements IBookingService {
 
             response.setStatusCode(200);
             response.setMessage("Sucessful");
+            response.setBookingConfirmationCode(bookingConfirmationCode);
 
         }catch (OurException e){
             response.setStatusCode(404);
@@ -73,7 +74,7 @@ public class BookingServiceImpl implements IBookingService {
     private boolean deskIsAvailable(Booking bookingRequest, List<Booking> existingBookings) {
         return existingBookings.stream()
                 .noneMatch(existingBooking ->
-                        bookingRequest.getCheckOutDate().equals(existingBooking.getCheckInDate())
+                        bookingRequest.getCheckInDate().equals(existingBooking.getCheckInDate())
                         || bookingRequest.getCheckOutDate().isBefore(existingBooking.getCheckOutDate())
                         || (bookingRequest.getCheckInDate().isAfter(existingBooking.getCheckInDate())
                         && bookingRequest.getCheckInDate().isBefore(existingBooking.getCheckOutDate()))
@@ -84,11 +85,11 @@ public class BookingServiceImpl implements IBookingService {
 
                         && bookingRequest.getCheckOutDate().isAfter(existingBooking.getCheckOutDate())
 
-                        ||bookingRequest.getCheckOutDate().equals(existingBooking.getCheckInDate())
-                        && bookingRequest.getCheckOutDate().equals(existingBooking.getCheckOutDate())
+                        ||(bookingRequest.getCheckInDate().equals(existingBooking.getCheckOutDate())
+                        && bookingRequest.getCheckOutDate().equals(existingBooking.getCheckInDate()))
 
-                        ||bookingRequest.getCheckInDate().equals(existingBooking.getCheckOutDate())
-                         && bookingRequest.getCheckOutDate().equals(existingBooking.getCheckInDate())
+                        ||(bookingRequest.getCheckInDate().equals(existingBooking.getCheckOutDate())
+                         && bookingRequest.getCheckOutDate().equals(bookingRequest.getCheckInDate()))
                 );
     }
 
