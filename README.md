@@ -6,7 +6,7 @@ In the project, there are admin and user-based roles and user information verifi
 - Spring Security- Role Based Authentication& Auhorization
 - JWT Token
 - AWS
-- MySQL
+- PostgreSQL
 - Hibernate/JPA
 - Model Mapper
 - Spring Validation
